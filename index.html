@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SentryEye | A camera that doesn't just watch. It thinks.</title>
+  <meta name="description" content="SentryEye - Next-generation AI-powered smart CCTV camera concept for autonomous campus safety and intelligent incident response. College Project 2026.">
+  <meta name="theme-color" content="#080c14">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Background Ambience & Grid Lines -->
+  <div class="cyber-grid" aria-hidden="true"></div>
+  <div class="ambient-glow" aria-hidden="true"></div>
+
+  <!-- Navigation Bar -->
+  <header class="site-header" id="top">
+    <div class="nav-container">
+      <a href="#top" class="brand-logo" aria-label="SentryEye Home">
+        <span class="logo-optic">
+          <span class="optic-lens"></span>
+          <span class="optic-reticle"></span>
+        </span>
+        <span class="brand-text">Sentry<span class="cyan-accent">Eye</span></span>
+        <span class="academic-pill">2026</span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+
+      <nav class="main-nav" id="mainNav">
+        <ul class="nav-links">
+          <li><a href="#problem" class="nav-link">The Problem</a></li>
+          <li><a href="#video" class="nav-link">Video Story</a></li>
+          <li><a href="#demo" class="nav-link">Live Demo</a></li>
+          <li><a href="#features" class="nav-link">SCAMPER Features</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="#demo" class="btn btn-sm btn-cyan-outline">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M12 7v5l3 3"/>
+            </svg>
+            Interactive HUD
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="section-container hero-grid">
+        <div class="hero-content reveal-on-scroll">
+          <div class="status-pill">
+            <span class="pulse-beacon"></span>
+            <span>AI-POWERED AUTONOMOUS CAMPUS SAFETY</span>
+          </div>
+
+          <h1 class="hero-title">
+            Sentry<span class="cyan-gradient">Eye</span>
+          </h1>
+
+          <p class="hero-tagline">
+            "A camera that doesn't just watch. <span class="highlight-cyan">It thinks.</span>"
+          </p>
+
+          <p class="hero-desc">
+            An intelligent, edge-computed CCTV surveillance system engineered to transform campus security from passive forensic playback into active, instant threat detection and automated campus operations.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#video" class="btn btn-primary" id="heroWatchBtn">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor">
+                <polygon points="5 3 19 12 5 21 5 3"/>
+              </svg>
+              Watch the Ad
+            </a>
+
+            <a href="#demo" class="btn btn-secondary" id="heroDemoBtn">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M3 12h3m12 0h3M12 3v3m0 12v3"/>
+                <circle cx="12" cy="12" r="9"/>
+              </svg>
+              Try the Demo
+            </a>
+          </div>
+
+          <!-- Hero Metrics Telemetry -->
+          <div class="hero-telemetry">
+            <div class="telemetry-card">
+              <span class="telemetry-label">INFERENCE SPEED</span>
+              <span class="telemetry-value cyan-val">Target: &lt; 15 ms</span>
+              <span class="telemetry-sub">On-Device Edge TPU</span>
+            </div>
+            <div class="telemetry-card">
+              <span class="telemetry-label">DETECTION MODES</span>
+              <span class="telemetry-value">3-in-1</span>
+              <span class="telemetry-sub">Fire • Tamper • Vision</span>
+            </div>
+            <div class="telemetry-card">
+              <span class="telemetry-label">LATENCY</span>
+              <span class="telemetry-value cyan-val">Near-instant alerts</span>
+              <span class="telemetry-sub">On-Campus Notification</span>
+            </div>
+          </div>
+          <div class="telemetry-note">Concept targets, prototype stage.</div>
+        </div>
+
+        <!-- Hero Visual: Cyber CCTV HUD Graphic -->
+        <div class="hero-visual reveal-on-scroll">
+          <div class="cctv-chassis">
+            <div class="chassis-header">
+              <div class="camera-status">
+                <span class="rec-dot"></span>
+                <span class="rec-text">LIVE STREAM // SE-CAM-01</span>
+              </div>
+              <div class="tech-coords">LAT 13.0827° N • LONG 80.2707° E</div>
+            </div>
+
+            <div class="camera-lens-graphic">
+              <div class="hud-circle ring-outer"></div>
+              <div class="hud-circle ring-middle"></div>
+              <div class="hud-circle ring-leds">
+                <span class="led-point l-1"></span>
+                <span class="led-point l-2"></span>
+                <span class="led-point l-3"></span>
+                <span class="led-point l-4"></span>
+                <span class="led-point l-5"></span>
+                <span class="led-point l-6"></span>
+                <span class="led-point l-7"></span>
+                <span class="led-point l-8"></span>
+              </div>
+              <div class="hud-circle ring-inner">
+                <div class="scanner-sweep"></div>
+                <div class="hud-core">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                  </svg>
+                  <span class="core-text">NEURAL LINK</span>
+                </div>
+              </div>
+
+              <!-- HUD Target Overlays -->
+              <div class="hud-corner top-left"></div>
+              <div class="hud-corner top-right"></div>
+              <div class="hud-corner bottom-left"></div>
+              <div class="hud-corner bottom-right"></div>
+
+              <div class="hud-reticle"></div>
+              <div class="hud-badge-float top">OBJECT RECOGNITION: ACTIVE</div>
+              <div class="hud-badge-float bottom">THERMAL FLIR: STANDBY [24.8°C]</div>
+            </div>
+
+            <div class="chassis-footer">
+              <span>MODEL: SENTRY-EYE V2.6 PRO</span>
+              <span class="status-ok">● SYSTEM NORMAL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Problem Section -->
+    <section class="problem-section" id="problem">
+      <div class="section-container">
+        <div class="section-header text-center reveal-on-scroll">
+          <span class="section-kicker">THE TRADITIONAL SURVEILLANCE PARADOX</span>
+          <h2 class="section-title">
+            "Normal CCTV only records.<br>
+            <span class="accent-danger">It cannot stop anything.</span>"
+          </h2>
+          <p class="section-subtitle">
+            Campuses worldwide deploy thousands of digital cameras, yet almost all of them remain passive witnesses to preventable emergencies.
+          </p>
+        </div>
+
+        <div class="problem-grid">
+          <!-- Problem 1: Fire goes unnoticed -->
+          <div class="problem-card reveal-on-scroll">
+            <div class="problem-icon-wrapper danger-flame">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+              </svg>
+            </div>
+            <div class="problem-badge">VULNERABILITY 01</div>
+            <h3 class="problem-heading">Fire Goes Unnoticed</h3>
+            <p class="problem-text">
+              Conventional CCTV lacks thermal awareness. Electrical short circuits and laboratory flare-ups emit smoke and high heat for critical minutes before anyone notices a flicker on crowded security monitors.
+            </p>
+            <div class="problem-impact">
+              <span class="impact-label">Consequence:</span>
+              <span class="impact-text">Delayed emergency response and catastrophic facility damage.</span>
+            </div>
+          </div>
+
+          <!-- Problem 2: Camera covered or removed -->
+          <div class="problem-card reveal-on-scroll">
+            <div class="problem-icon-wrapper danger-tamper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 1l22 22"/>
+                <path d="M21 21H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3m3-3h6l2 3h4a2 2 0 0 1 2 2v9.34"/>
+                <circle cx="12" cy="13" r="4"/>
+              </svg>
+            </div>
+            <div class="problem-badge">VULNERABILITY 02</div>
+            <h3 class="problem-heading">Camera Can Be Covered or Removed</h3>
+            <p class="problem-text">
+              Vandals and intruders can simply spray-paint lenses, drape cloth over domes, or physically twist camera mounts. Legacy systems register no immediate alarm, leaving fatal security blindspots undetected.
+            </p>
+            <div class="problem-impact">
+              <span class="impact-label">Consequence:</span>
+              <span class="impact-text">Zero warning when intentional blindness or hardware theft occurs.</span>
+            </div>
+          </div>
+
+          <!-- Problem 3: Manual monitoring is tiring -->
+          <div class="problem-card reveal-on-scroll">
+            <div class="problem-icon-wrapper danger-fatigue">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+                <path d="M18.36 5.64l1.42-1.42M4.22 19.78l1.42-1.42"/>
+              </svg>
+            </div>
+            <div class="problem-badge">VULNERABILITY 03</div>
+            <h3 class="problem-heading">Manual Monitoring is Tiring</h3>
+            <p class="problem-text">
+              Human attention drops quickly during long monitoring shifts, so important events can be missed.
+            </p>
+            <div class="problem-impact">
+              <span class="impact-label">Consequence:</span>
+              <span class="impact-text">Critical incidents go completely unseen until post-event inquiry.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SentryEye Contrast Banner -->
+        <div class="problem-solution-bridge reveal-on-scroll">
+          <div class="bridge-col bridge-legacy">
+            <div class="bridge-tag">PASSIVE CAMERA</div>
+            <h4>Wait &amp; Record</h4>
+            <p>Passively saves bytes to hard drives. Useless during live threats.</p>
+          </div>
+          <div class="bridge-divider">
+            <span class="bridge-arrow">VS</span>
+          </div>
+          <div class="bridge-col bridge-sentry">
+            <div class="bridge-tag cyan-tag">SENTRYEYE EDGE-AI</div>
+            <h4>Detect &amp; Act</h4>
+            <p>Analyzes every frame in real-time. Alerts security, sounds alarms, and acts instantly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Video Section -->
+    <section class="video-section" id="video">
+      <div class="section-container">
+        <div class="section-header text-center reveal-on-scroll">
+          <span class="section-kicker">CONCEPT STORY &amp; VOICE WALKTHROUGH</span>
+          <h2 class="section-title">Watch the Ad</h2>
+          <p class="section-subtitle">
+            Experience the design philosophy, real-world campus deployment scenarios, and vision behind SentryEye in our official concept video.
+          </p>
+        </div>
+
+        <div class="video-console-wrapper reveal-on-scroll">
+          <div class="video-terminal-header">
+            <div class="terminal-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <div class="terminal-filename">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/>
+                <line x1="7" y1="2" x2="7" y2="22"/>
+                <line x1="17" y1="2" x2="17" y2="22"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <line x1="2" y1="7" x2="7" y2="7"/>
+                <line x1="2" y1="17" x2="7" y2="17"/>
+                <line x1="17" y1="17" x2="22" y2="17"/>
+                <line x1="17" y1="7" x2="22" y2="7"/>
+              </svg>
+              SentryEye_Story_WithVoice.mp4
+            </div>
+            <div class="terminal-meta">
+              <span class="badge-tech">NARRATION: ACTIVE</span>
+              <span class="badge-tech">720p HD</span>
+            </div>
+          </div>
+
+          <div class="video-player-container">
+            <video 
+              id="sentryVideo" 
+              class="sentry-video-player" 
+              controls 
+              preload="metadata"
+              playsinline
+              poster="poster.svg"
+              aria-label="SentryEye concept promotional video with voice"
+            >
+              <source src="SentryEye_Story_WithVoice.mp4" type="video/mp4">
+              Your browser does not support the video tag. You can download the video file directly: SentryEye_Story_WithVoice.mp4.
+            </video>
+            
+            <div class="video-overlay-helper" id="videoPlayHint">
+              <div class="helper-content">
+                <button class="custom-play-btn" id="customPlayBtn" aria-label="Play SentryEye Video">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="5 3 19 12 5 21 5 3"/>
+                  </svg>
+                </button>
+                <p>Click to play concept ad with voice narration</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="video-terminal-footer">
+            <div class="footer-spec">
+              <strong>Source:</strong> Local Project Master • <strong>Audio:</strong> Dual Channel Voiceover • <strong>Format:</strong> H.264 MP4
+            </div>
+            <div class="footer-action">
+              <a href="SentryEye_Story_WithVoice.mp4" download class="btn-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                Download MP4
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Interactive Demo Section -->
+    <section class="demo-section" id="demo">
+      <div class="section-container">
+        <div class="section-header text-center reveal-on-scroll">
+          <span class="section-kicker">REAL-TIME HARDWARE &amp; AI SIMULATION</span>
+          <h2 class="section-title">Interactive Edge-AI Demo</h2>
+          <p class="section-subtitle">
+            Test SentryEye's autonomous threat reaction in our interactive simulator. Trigger realistic hazard scenarios and experience how on-device AI neutralizes risks in milliseconds.
+          </p>
+        </div>
+
+        <div class="demo-console reveal-on-scroll">
+          <!-- Control Panel -->
+          <div class="demo-controls-bar">
+            <div class="controls-label">
+              <span class="control-status-dot"></span>
+              <strong>SCENARIO INJECTOR:</strong> Select test event
+            </div>
+
+            <div class="demo-buttons-group">
+              <button class="sim-btn sim-fire" id="btnSimFire" data-mode="fire">
+                <svg class="sim-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+                </svg>
+                Simulate Fire
+              </button>
+
+              <button class="sim-btn sim-tamper" id="btnSimTamper" data-mode="tamper">
+                <svg class="sim-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                  <line x1="12" y1="9" x2="12" y2="13"/>
+                  <line x1="12" y1="17" x2="12.01" y2="17"/>
+                </svg>
+                Simulate Tampering
+              </button>
+
+              <button class="sim-btn sim-attendance" id="btnSimAttendance" data-mode="attendance">
+                <svg class="sim-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <polyline points="16 11 18 13 22 9"/>
+                </svg>
+                Mark Attendance
+              </button>
+
+              <button class="sim-btn sim-reset" id="btnSimReset" title="Return to live idle feed">
+                <svg class="sim-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="1 4 1 10 7 10"/>
+                  <polyline points="23 20 23 14 17 14"/>
+                  <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/>
+                </svg>
+                Reset Feed
+              </button>
+            </div>
+
+            <!-- Audio Siren & Mute Controls -->
+            <div class="audio-control-wrapper">
+              <button class="mute-toggle-btn" id="audioToggleBtn" aria-label="Toggle Siren Audio" title="Toggle audio alert siren">
+                <span class="audio-icon-unmuted" id="iconUnmuted">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                  </svg>
+                </span>
+                <span class="audio-icon-muted hidden" id="iconMuted">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                    <line x1="23" y1="9" x2="17" y2="15"/>
+                    <line x1="17" y1="9" x2="23" y2="15"/>
+                  </svg>
+                </span>
+                <span class="mute-text" id="audioStatusText">Siren: ON</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Mock Camera Screen Surface -->
+          <div class="mock-cctv-screen" id="mockScreen" data-state="idle">
+            <!-- Screen Top HUD Bar -->
+            <div class="screen-hud-top">
+              <div class="hud-left">
+                <span class="live-rec-badge">
+                  <span class="rec-blinker"></span>
+                  REC
+                </span>
+                <span class="cam-id">CAM_04 // ENGG_CORRIDOR_SOUTH</span>
+              </div>
+              <div class="hud-center">
+                <span class="feed-resolution">4K UHD • 60 FPS</span>
+              </div>
+              <div class="hud-right">
+                <span class="hud-clock" id="screenClock">2026-10-18 16:24:22</span>
+                <span class="battery-status">POE+ [54V 30W]</span>
+              </div>
+            </div>
+
+            <!-- CCTV Feed Scene Canvas / Visual Backdrop -->
+            <div class="screen-viewport" id="screenViewport">
+              <!-- Visual Scanlines Effect -->
+              <div class="screen-scanlines"></div>
+
+              <!-- Default Campus Scene Environment -->
+              <div class="mock-environment" id="mockEnvironment">
+                <div class="env-ceiling">
+                  <div class="ceiling-strip"></div>
+                  <div class="cctv-lens-reflection"></div>
+                </div>
+                <div class="env-hallway">
+                  <div class="hallway-door door-left"><span>LAB 101</span></div>
+                  <div class="hallway-door door-right"><span>AI RESEARCH</span></div>
+                  <div class="hallway-floor">
+                    <div class="floor-perspective-grid"></div>
+                  </div>
+                </div>
+
+                <!-- Idle Targeting Crosshair -->
+                <div class="idle-crosshairs" id="idleCrosshairs">
+                  <div class="crosshair center"></div>
+                  <div class="crosshair-label">AI TRACKER: STANDBY // SCANNING SPATIAL FIELD</div>
+                </div>
+              </div>
+
+              <!-- ============================================== -->
+              <!-- ALERT STATE 1: FIRE DETECTED OVERLAY -->
+              <!-- ============================================== -->
+              <div class="scenario-overlay overlay-fire hidden" id="overlayFire">
+                <div class="fire-flame-hazard" id="fireHazard">
+                  <div class="flame-particles"></div>
+                  <!-- The Red "FIRE 97%" Box -->
+                  <div class="detection-bounding-box fire-box">
+                    <div class="box-tag">
+                      <span class="tag-pulse"></span>
+                      <strong>FIRE 97%</strong>
+                    </div>
+                    <div class="box-coords">POS: [X: 412, Y: 188] • TEMP: 342°C</div>
+                    <div class="box-corner-marker c-tl"></div>
+                    <div class="box-corner-marker c-tr"></div>
+                    <div class="box-corner-marker c-bl"></div>
+                    <div class="box-corner-marker c-br"></div>
+                  </div>
+                </div>
+
+                <div class="hazard-banner fire-banner">
+                  <div class="hazard-icon-pulse">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                    </svg>
+                  </div>
+                  <div class="hazard-details">
+                    <span class="hazard-title">CRITICAL HAZARD: THERMAL ANOMALY</span>
+                    <span class="hazard-action">ALARM ACTIVE • DISPATCHING CAMPUS SAFETY • SPRINKLER GATE READY</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ============================================== -->
+              <!-- ALERT STATE 2: TAMPERING DETECTED OVERLAY -->
+              <!-- ============================================== -->
+              <div class="scenario-overlay overlay-tamper hidden" id="overlayTamper">
+                <div class="static-noise-canvas"></div>
+                <div class="tamper-box-wrapper">
+                  <div class="tamper-glitch-badge">
+                    <span class="glitch-icon">⚠️</span>
+                    <h2 class="tamper-text" data-text="TAMPERING DETECTED / NO SIGNAL">
+                      TAMPERING DETECTED / NO SIGNAL
+                    </h2>
+                    <div class="tamper-subtext">
+                      ACCELEROMETER DISPLACEMENT: +54° TILT • OPTICAL OCCLUSION DETECTED
+                    </div>
+                    <div class="tamper-actions-log">
+                      <span class="log-item">⚡ 6-Axis IMU Shock Alert Broadcasted</span>
+                      <span class="log-item">📡 Secondary Mesh Network Relay Active</span>
+                      <span class="log-item">🚨 Security Patrol Dispatched to CAM_04</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ============================================== -->
+              <!-- ALERT STATE 3: ATTENDANCE MARKED OVERLAY -->
+              <!-- ============================================== -->
+              <div class="scenario-overlay overlay-attendance hidden" id="overlayAttendance">
+                <div class="attendance-faces-container">
+                  <!-- Student 1 Box -->
+                  <div class="face-detect-box student-1">
+                    <div class="face-target-corners"></div>
+                    <div class="face-avatar-dot"></div>
+                    <div class="face-id-label">
+                      <span class="badge-match">MATCH 99.4%</span>
+                      <span class="student-name">Aarav Sharma</span>
+                      <span class="roll-number">CS-2026-042</span>
+                    </div>
+                  </div>
+
+                  <!-- Student 2 Box -->
+                  <div class="face-detect-box student-2">
+                    <div class="face-target-corners"></div>
+                    <div class="face-avatar-dot"></div>
+                    <div class="face-id-label">
+                      <span class="badge-match">MATCH 98.8%</span>
+                      <span class="student-name">Diya Patel</span>
+                      <span class="roll-number">CS-2026-088</span>
+                    </div>
+                  </div>
+
+                  <!-- Student 3 Box -->
+                  <div class="face-detect-box student-3">
+                    <div class="face-target-corners"></div>
+                    <div class="face-avatar-dot"></div>
+                    <div class="face-id-label">
+                      <span class="badge-match">MATCH 99.1%</span>
+                      <span class="student-name">Rohan Verma</span>
+                      <span class="roll-number">CS-2026-115</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Student Attendance Roster Card -->
+                <div class="attendance-roster-panel">
+                  <div class="roster-header">
+                    <div class="roster-title">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                      </svg>
+                      ATTENDANCE MARKED
+                    </div>
+                    <span class="sync-badge">PORTAL SYNCED</span>
+                  </div>
+
+                  <ul class="student-list" id="studentRosterList">
+                    <li class="student-item verified">
+                      <span class="status-tick">✓</span>
+                      <div class="student-meta">
+                        <strong class="st-name">Aarav Sharma</strong>
+                        <span class="st-roll">CS-2026-042</span>
+                      </div>
+                      <span class="time-stamp">16:24:18</span>
+                    </li>
+                    <li class="student-item verified">
+                      <span class="status-tick">✓</span>
+                      <div class="student-meta">
+                        <strong class="st-name">Diya Patel</strong>
+                        <span class="st-roll">CS-2026-088</span>
+                      </div>
+                      <span class="time-stamp">16:24:19</span>
+                    </li>
+                    <li class="student-item verified">
+                      <span class="status-tick">✓</span>
+                      <div class="student-meta">
+                        <strong class="st-name">Rohan Verma</strong>
+                        <span class="st-roll">CS-2026-115</span>
+                      </div>
+                      <span class="time-stamp">16:24:20</span>
+                    </li>
+                    <li class="student-item verified">
+                      <span class="status-tick">✓</span>
+                      <div class="student-meta">
+                        <strong class="st-name">Sneha Reddy</strong>
+                        <span class="st-roll">CS-2026-149</span>
+                      </div>
+                      <span class="time-stamp">16:24:21</span>
+                    </li>
+                  </ul>
+
+                  <div class="roster-footer">
+                    <span>Batch: CSE-3A (Classroom 302)</span>
+                    <strong class="green-text">4/4 Students Verified</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Screen Bottom Telemetry Bar -->
+            <div class="screen-hud-bottom">
+              <div class="telemetry-item">
+                <span class="t-key">SENSORS:</span>
+                <span class="t-val ok" id="sensorThermal">FLIR [OK]</span>
+                <span class="t-val ok" id="sensorGyro">IMU-6AXIS [OK]</span>
+                <span class="t-val ok" id="sensorMetal">MET-AUX [STANDBY]</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="t-key">AI PIPELINE:</span>
+                <span class="t-val highlight" id="aiPipelineStatus">IDLE / SURVEILLANCE_v2</span>
+              </div>
+              <div class="telemetry-item">
+                <span class="t-key">NETWORK:</span>
+                <span class="t-val">PoE+ 1Gbps ENCRYPTED</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Tip for the Interactive Demo -->
+          <div class="demo-instructions">
+            <span class="instruction-badge">HOW TO TEST</span>
+            <span>Click any scenario button above to trigger live edge responses. Turn on your audio to hear SentryEye's Web Audio API threat siren!</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Features Section (SCAMPER Framework) -->
+    <section class="features-section" id="features">
+      <div class="section-container">
+        <div class="section-header text-center reveal-on-scroll">
+          <span class="section-kicker">INNOVATION METHODOLOGY</span>
+          <h2 class="section-title">
+            The <span class="cyan-gradient">SCAMPER</span> Framework
+          </h2>
+          <p class="section-subtitle">
+            How we reimagined everyday campus CCTV from the ground up using systematic creative product innovation principles.
+          </p>
+        </div>
+
+        <div class="scamper-grid" id="scamperGrid">
+          <div class="scamper-grid-spotlight" id="scamperSpotlight" aria-hidden="true"></div>
+          <!-- S - Substitute -->
+          <div class="scamper-card reveal-on-scroll" data-scamper="S">
+            <div class="scamper-letter-badge">S</div>
+            <div class="card-icon-container">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                <line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="12" y1="17" x2="12" y2="21"/>
+                <path d="M7 8h2m2 0h6M7 12h4m2 0h4"/>
+              </svg>
+            </div>
+            <span class="scamper-method">SUBSTITUTE</span>
+            <h3 class="scamper-title">AI Monitoring Instead of Manual Watching</h3>
+            <p class="scamper-desc">
+              Replaces error-prone, sleep-deprived human monitoring walls with on-device computer vision models running 24/7. Detects loitering, stampedes, and unauthorized access instantaneously without human fatigue.
+            </p>
+            <div class="scamper-tagline">Autonomous Edge-AI Inference</div>
+          </div>
+
+          <!-- C - Combine -->
+          <div class="scamper-card reveal-on-scroll" data-scamper="C">
+            <div class="scamper-letter-badge">C</div>
+            <div class="card-icon-container">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                <path d="M2 12h20"/>
+              </svg>
+            </div>
+            <span class="scamper-method">COMBINE</span>
+            <h3 class="scamper-title">Camera Vision + Thermal Sensing + Tamper Protection</h3>
+            <p class="scamper-desc">
+              Unifies three distinct defense layers into a single smart node: high-resolution optical video for visual clarity, thermal infrared micro-bolometers for early flame ignition, and internal 6-axis accelerometers for anti-tamper shock sensing.
+            </p>
+            <div class="scamper-tagline">Tri-Sensor Data Fusion</div>
+          </div>
+
+          <!-- A - Adapt -->
+          <div class="scamper-card reveal-on-scroll" data-scamper="A">
+            <div class="scamper-letter-badge">A</div>
+            <div class="card-icon-container">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+                <polyline points="16 11 18 13 22 9"/>
+              </svg>
+            </div>
+            <span class="scamper-method">ADAPT</span>
+            <h3 class="scamper-title">AI Facial-Recognition Attendance</h3>
+            <p class="scamper-desc">
+              Adapts security vision networks to tackle daily academic logistics. When mounted in lecture halls and classroom entrances, SentryEye automatically records student attendance with sub-second biometric verification, eliminating physical queues.
+            </p>
+            <div class="scamper-tagline">Zero-Touch Academic Logging</div>
+          </div>
+
+          <!-- M - Modify -->
+          <div class="scamper-card reveal-on-scroll" data-scamper="M">
+            <div class="scamper-letter-badge">M</div>
+            <div class="card-icon-container">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+              </svg>
+            </div>
+            <span class="scamper-method">MODIFY</span>
+            <h3 class="scamper-title">Ring of LED Lights Around the Lens</h3>
+            <p class="scamper-desc">
+              Features an integrated circular array of dual-spectrum LEDs surrounding the lens chassis. Delivers 360-degree uniform illumination for nighttime clarity and doubles as an emergency high-visibility warning strobe during campus lockdown alerts.
+            </p>
+            <div class="scamper-tagline">Wide Night Coverage &amp; Active Strobe</div>
+          </div>
+
+          <!-- P - Put to another use -->
+          <div class="scamper-card reveal-on-scroll" data-scamper="P">
+            <div class="scamper-letter-badge">P</div>
+            <div class="card-icon-container">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                <polyline points="2 17 12 22 22 17"/>
+                <polyline points="2 12 12 17 22 12"/>
+              </svg>
+            </div>
+            <span class="scamper-method">PUT TO ANOTHER USE</span>
+            <h3 class="scamper-title">Optional Metal-Sensor Module</h3>
+            <p class="scamper-desc">
+              Expands beyond optics through an auxiliary snap-on expansion bay. When deployed at exam hall entrances or hostel turnstiles, it connects to an electromagnetic sensor to detect concealed contraband, weapons, or unauthorized electronic devices.
+            </p>
+            <div class="scamper-tagline">Multi-Threat Perimeter Screener</div>
+          </div>
+
+          <!-- E - Eliminate -->
+          <div class="scamper-card reveal-on-scroll" data-scamper="E">
+            <div class="scamper-letter-badge">E</div>
+            <div class="card-icon-container">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+              </svg>
+            </div>
+            <span class="scamper-method">ELIMINATE</span>
+            <h3 class="scamper-title">Single PoE Cable for Power and Data</h3>
+            <p class="scamper-desc">
+              Eliminates separate DC transformers, battery maintenance hassles, and tangled multi-wire setups. A single standardized Power-over-Ethernet (802.3at PoE+) RJ-45 cable simultaneously supplies high-speed gigabit telemetry and operating voltage.
+            </p>
+            <div class="scamper-tagline">Zero Cable Clutter • Rapid Install</div>
+          </div>
+
+          <!-- R - Reverse -->
+          <div class="scamper-card scamper-card-wide reveal-on-scroll" data-scamper="R">
+            <div class="scamper-letter-badge">R</div>
+            <div class="card-icon-container">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10"/>
+                <path d="M12 2v4l3-3-3-3"/>
+                <path d="M7 12a5 5 0 0 1 5-5"/>
+              </svg>
+            </div>
+            <span class="scamper-method">REVERSE</span>
+            <h3 class="scamper-title">Rotating/Movable Camera (Drone Style as Future Scope)</h3>
+            <p class="scamper-desc">
+              Inverts the traditional concept of static, immovably bolted wall cameras. In our future architectural roadmap, SentryEye mounts on dual-axis magnetic tracks or autonomously disengages as a tethered micro-drone to fly directly to incident coordinates for 360-degree close-up inspection.
+            </p>
+            <div class="scamper-tagline">Autonomous Mobile Inspection Scope</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Final Call-to-Action Section -->
+    <section class="cta-section" id="invest">
+      <div class="section-container">
+        <div class="cta-card reveal-on-scroll">
+          <div class="cta-optic-watermark" aria-hidden="true"></div>
+          
+          <div class="cta-content">
+            <div class="cta-badge">ACADEMIC INCUBATION &amp; SEED STAGE</div>
+            <h2 class="cta-title">
+              Ready to pioneer the future of autonomous campus safety?
+            </h2>
+            <p class="cta-desc">
+              SentryEye proves that passive surveillance is obsolete. Support our prototype expansion, pilot testing in college residence halls, and patent development.
+            </p>
+
+            <div class="cta-action-area">
+              <button class="btn btn-primary btn-lg pulse-glow" id="investBtn">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                </svg>
+                Invest in SentryEye
+              </button>
+              <span class="cta-subnote">Zero financial commitment • Experience our prototype pitch deck</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Interactive Investment Celebration Modal -->
+  <div class="modal-backdrop hidden" id="investModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close thank you modal">×</button>
+      
+      <div class="modal-header-graphic">
+        <div class="trophy-glow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+            <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+            <path d="M4 22h16"/>
+            <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
+            <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
+            <path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/>
+          </svg>
+        </div>
+      </div>
+
+      <h3 class="modal-title" id="modalTitle">🎉 Thank You for Backing SentryEye!</h3>
+      
+      <p class="modal-body-text">
+        Your belief in <strong>SentryEye</strong> means the world to our student engineering team! You've just pledged your symbolic seed interest into our vision of making university campuses proactively safe, intelligent, and autonomous.
+      </p>
+
+      <div class="pledge-certificate">
+        <div class="cert-header">
+          <span>SENTRYEYE INNOVATION LABS</span>
+          <span class="cert-id" id="certNumber">PLEDGE-ID #2026-SE</span>
+        </div>
+        <div class="cert-statement">
+          "A camera that doesn't just watch. It thinks."
+        </div>
+        <div class="cert-footer">
+          <span>STATUS: HONORARY ANGEL SUPPORTER</span>
+          <span>COLLEGE DEMO DAY 2026</span>
+        </div>
+      </div>
+
+      <div class="modal-buttons">
+        <button class="btn btn-primary" id="btnModalAcknowledge">Awesome, Count Me In!</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="section-container footer-content">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span class="optic-lens-sm"></span>
+          <strong>SentryEye</strong>
+        </div>
+        <p class="footer-tagline">A camera that doesn't just watch. It thinks.</p>
+      </div>
+
+      <div class="footer-middle">
+        <p class="footer-highlight">SentryEye - College Project 2026</p>
+        <p class="footer-subtext">Department of Computer Science &amp; Engineering • Campus Safety Initiative</p>
+      </div>
+
+      <div class="footer-meta">
+        <a href="#top" class="back-to-top" aria-label="Back to top">
+          Back to Top ↑
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
