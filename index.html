@@ -9,20 +9,9 @@
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-  <!-- SVG goo filter (used by the navbar pill) -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-    <defs>
-      <filter id="gooey-filter">
-        <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>
-        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo"/>
-        <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
-      </filter>
-    </defs>
-  </svg>
 
   <!-- Background Ambience & Grid Lines -->
   <div class="cyber-grid" aria-hidden="true"></div>
@@ -110,7 +99,7 @@
           <div class="hero-telemetry">
             <div class="telemetry-card">
               <span class="telemetry-label">INFERENCE SPEED</span>
-              <span class="telemetry-value cyan-val">&lt; 15 ms</span>
+              <span class="telemetry-value cyan-val">Target: &lt; 15 ms</span>
               <span class="telemetry-sub">On-Device Edge TPU</span>
             </div>
             <div class="telemetry-card">
@@ -120,10 +109,11 @@
             </div>
             <div class="telemetry-card">
               <span class="telemetry-label">LATENCY</span>
-              <span class="telemetry-value cyan-val">0.0s Delay</span>
+              <span class="telemetry-value cyan-val">Near-instant alerts</span>
               <span class="telemetry-sub">Instant On-Campus Alert</span>
             </div>
           </div>
+          <p class="hero-note">Concept targets, prototype stage.</p>
         </div>
 
         <!-- Hero Visual: Cyber CCTV HUD Graphic -->
@@ -246,7 +236,7 @@
             <div class="problem-badge">VULNERABILITY 03</div>
             <h3 class="problem-heading">Manual Monitoring is Tiring</h3>
             <p class="problem-text">
-              Studies prove security guards miss up to 95% of video anomalies after just 20 minutes of watching multiple video walls. Human attention span cannot reliably track dozens of campus corridors simultaneously.
+              Human attention drops quickly during long monitoring shifts, so important events can be missed. Human attention span cannot reliably track dozens of campus corridors simultaneously.
             </p>
             <div class="problem-impact">
               <span class="impact-label">Consequence:</span>
@@ -307,7 +297,7 @@
             </div>
             <div class="terminal-meta">
               <span class="badge-tech">NARRATION: ACTIVE</span>
-              <span class="badge-tech">1080p AI-RENDER</span>
+              <span class="badge-tech">720p HD</span>
             </div>
           </div>
 
@@ -317,6 +307,7 @@
               class="sentry-video-player" 
               controls 
               preload="metadata"
+              poster="poster.jpg"
               playsinline
               aria-label="SentryEye concept promotional video with voice"
             >
@@ -898,6 +889,5 @@
   </footer>
 
   <script src="script.js"></script>
-  <script src="effects.js"></script>
 </body>
 </html>

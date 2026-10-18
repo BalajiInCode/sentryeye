@@ -25,10 +25,6 @@ An AI-powered smart CCTV camera concept for college campus safety, real-time thr
   - **[P] Put to another use**: Optional metal-sensor module
   - **[E] Eliminate**: Single PoE cable for power and data
   - **[R] Reverse**: Rotating/movable camera (drone style as future scope)
-- **UI Effects (vanilla JS, no React)** in `effects.js`:
-  - **Cursor Grid**: background grid lights up around the cursor, click sends a ripple
-  - **Variable Proximity**: hero title letters get bolder near the cursor
-  - **Gooey Nav**: navbar pill with gooey droplets that follows the section you are on
 - **Call-to-Action**: "Invest in SentryEye" button featuring an honorary seed supporter certificate and interactive confetti animation.
 - **Footer**: "SentryEye - College Project 2026".
 
@@ -68,8 +64,8 @@ scamper-reprentation/
 ├── index.html                     # Semantic HTML5 single-page structure
 ├── style.css                      # Cyber-modern dark responsive styles & animations
 ├── script.js                      # Web Audio API siren, interactive demo & modal logic
-├── effects.js                     # Cursor grid, variable-weight title, gooey navbar (vanilla JS)
 ├── SentryEye_Story_WithVoice.mp4  # Concept video with voice narration
+├── poster.jpg                     # Video poster frame
 └── README.md                      # Documentation & project guide
 ```
 

@@ -2466,50 +2466,60 @@ h1, h2, h3, h4 {
 
 
 /* ==========================================================================
-   UI Effects (effects.js): CursorGrid, VariableProximity, GooeyNav
+   Fixes: siren icons, tracker label, hero note, mobile HUD
    ========================================================================== */
-/* CursorGrid: canvas replaces the static CSS grid when JS is available */
-.cyber-grid.has-canvas { background-image: none; }
-.cyber-grid-canvas { position: absolute; inset: 0; display: block; }
-
-/* VariableProximity (hero title) */
-.hero-title .vp-letter {
-  display: inline-block;
-  font-variation-settings: 'wght' 450;
-  will-change: font-variation-settings;
+/* Only one siren icon at a time (scoped so modal/video-hint fades are untouched) */
+.audio-icon-unmuted.hidden,
+.audio-icon-muted.hidden {
+  display: none !important;
 }
 
-/* GooeyNav */
-.nav-links { position: relative; }
-.nav-links .gooey-layer {
-  position: absolute;
-  inset: 0;
-  filter: url(#gooey-filter);
-  pointer-events: none;
-  z-index: 0;
+/* AI tracker label only in idle mode */
+.mock-cctv-screen:not([data-state="idle"]) .crosshair-label {
+  display: none;
 }
-.gooey-pill {
-  position: absolute;
-  top: 0; left: 0;
-  border-radius: 999px;
-  background: var(--cyan-primary);
-  opacity: 0;
-  box-shadow: 0 0 18px rgba(0, 240, 255, 0.45);
-  transition: transform 0.55s cubic-bezier(.5, 1.4, .4, 1), width 0.55s cubic-bezier(.5, 1.4, .4, 1), height 0.3s ease, opacity 0.3s ease;
+
+.hero-note {
+  margin-top: 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
 }
-.gooey-drop {
-  position: absolute;
-  top: 0; left: 0;
-  border-radius: 50%;
-  background: var(--cyan-primary);
-  opacity: 0;
-}
-.nav-links.gooey-ready .nav-link { position: relative; z-index: 1; }
-.nav-links.gooey-ready .nav-link.is-active { color: #04101a; font-weight: 600; }
-@media (max-width: 768px) {
-  .nav-links .gooey-layer { display: none; }
-  .nav-links.gooey-ready .nav-link.is-active { color: var(--cyan-primary); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .gooey-pill { transition: none; }
+
+/* Mock CCTV top HUD on small phones: two clean rows */
+@media (max-width: 600px) {
+  .screen-hud-top {
+    flex-wrap: wrap;
+    row-gap: 0.35rem;
+    padding: 0.55rem 0.85rem;
+    font-size: 0.7rem;
+  }
+  .screen-hud-top .hud-left {
+    display: flex;
+    align-items: center;
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+  .screen-hud-top .live-rec-badge {
+    flex: none;
+    margin-right: 0.6rem;
+  }
+  .screen-hud-top .cam-id {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .screen-hud-top .hud-center,
+  .screen-hud-top .battery-status {
+    display: none;
+  }
+  .screen-hud-top .hud-right {
+    flex: 1 1 100%;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .screen-hud-top .hud-clock {
+    margin-right: 0;
+  }
 }
