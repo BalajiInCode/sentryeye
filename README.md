@@ -17,7 +17,7 @@ An AI-powered smart CCTV camera concept for college campus safety, real-time thr
   - ⚠️ **Simulate Tampering**: Triggers static interference, accelerometer displacement alerts, and a `TAMPERING DETECTED / NO SIGNAL` glitch banner with siren alarm.
   - 🎓 **Mark Attendance**: Renders face detection bounding boxes, student biometric verification tags, and an animated green `ATTENDANCE MARKED` roster.
   - 🔊 **Web Audio API**: Built-in procedural sound synthesizer with an interactive **Mute Toggle** button.
-- **SCAMPER Innovation Framework**: 7 comprehensive cards detailing how everyday CCTV was re-engineered:
+- **SCAMPER Innovation Framework**: 7 comprehensive cards detailing how everyday CCTV was re-engineered, equipped with a dynamic **Chroma Grid** spotlight hover effect:
   - **[S] Substitute**: AI monitoring instead of manual watching
   - **[C] Combine**: Camera vision + thermal sensing + tamper protection
   - **[A] Adapt**: AI facial-recognition attendance
@@ -65,7 +65,6 @@ scamper-reprentation/
 ├── style.css                      # Cyber-modern dark responsive styles & animations
 ├── script.js                      # Web Audio API siren, interactive demo & modal logic
 ├── SentryEye_Story_WithVoice.mp4  # Concept video with voice narration
-├── poster.jpg                     # Video poster frame
 └── README.md                      # Documentation & project guide
 ```
 

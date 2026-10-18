@@ -119,6 +119,11 @@ body {
   padding-inline: 1.5rem;
 }
 
+/* Visibility Utilities */
+.hidden {
+  display: none !important;
+}
+
 /* Typography Utilities */
 h1, h2, h3, h4 {
   font-family: var(--font-heading);
@@ -493,6 +498,14 @@ h1, h2, h3, h4 {
 .telemetry-sub {
   font-size: 0.75rem;
   color: var(--text-muted);
+}
+
+.telemetry-note {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  margin-top: 0.75rem;
+  font-style: italic;
 }
 
 /* Hero CCTV Graphic Chassis */
@@ -1176,6 +1189,18 @@ h1, h2, h3, h4 {
   color: #94a3b8;
 }
 
+.mute-toggle-btn .audio-icon-unmuted,
+.mute-toggle-btn .audio-icon-muted {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mute-toggle-btn .audio-icon-unmuted.hidden,
+.mute-toggle-btn .audio-icon-muted.hidden {
+  display: none !important;
+}
+
 /* Mock Screen Chassis */
 .mock-cctv-screen {
   background: #02050b;
@@ -1405,6 +1430,14 @@ h1, h2, h3, h4 {
   padding: 0.25rem 0.65rem;
   border-radius: var(--radius-sm);
   letter-spacing: 0.05em;
+}
+
+/* Hide Idle Crosshairs & AI Tracker Label during active simulations */
+.mock-cctv-screen[data-state="fire"] .idle-crosshairs,
+.mock-cctv-screen[data-state="tamper"] .idle-crosshairs,
+.mock-cctv-screen[data-state="attendance"] .idle-crosshairs,
+.mock-cctv-screen:not([data-state="idle"]) .idle-crosshairs {
+  display: none !important;
 }
 
 /* ==========================================================================
@@ -1865,6 +1898,25 @@ h1, h2, h3, h4 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.75rem;
+  position: relative;
+  --mx: -1000px;
+  --my: -1000px;
+}
+
+/* Chroma Grid Spotlight Overlay */
+.scamper-grid-spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: var(--radius-lg);
+  background: radial-gradient(circle 250px at var(--mx) var(--my), rgba(0, 240, 255, 0.22) 0%, rgba(20, 184, 166, 0.1) 45%, transparent 100%);
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.scamper-grid.has-mouse .scamper-grid-spotlight {
+  opacity: 1;
 }
 
 .scamper-card {
@@ -1873,15 +1925,17 @@ h1, h2, h3, h4 {
   border-radius: var(--radius-lg);
   padding: 2.25rem 2rem;
   position: relative;
-  transition: all var(--transition-normal);
+  transition: filter 0.15s ease, transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
   display: flex;
   flex-direction: column;
+  filter: grayscale(var(--card-gray, 0.8)) brightness(var(--card-bright, 0.9));
+  will-change: filter, transform;
 }
 
 .scamper-card:hover {
   transform: translateY(-6px);
   border-color: var(--cyan-primary);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 240, 255, 0.18);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 240, 255, 0.22);
   background: var(--bg-card-hover);
 }
 
@@ -1962,8 +2016,17 @@ h1, h2, h3, h4 {
   padding-top: 0.9rem;
 }
 
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .scamper-card {
+    filter: none !important;
+  }
+  .scamper-grid-spotlight {
+    display: none !important;
+  }
+}
+
 /* ==========================================================================
-   7. Final Call-to-Action Section
+   6. Final Call-to-Action Section
    ========================================================================== */
 .cta-section {
   padding-block: 6rem;
@@ -2368,7 +2431,6 @@ h1, h2, h3, h4 {
     grid-column: span 2;
   }
 
-
   .overlay-attendance {
     grid-template-columns: 1fr;
     gap: 1rem;
@@ -2449,7 +2511,6 @@ h1, h2, h3, h4 {
     grid-template-columns: 1fr;
   }
 
-
   .footer-content {
     flex-direction: column;
     text-align: center;
@@ -2464,62 +2525,54 @@ h1, h2, h3, h4 {
   }
 }
 
-
-/* ==========================================================================
-   Fixes: siren icons, tracker label, hero note, mobile HUD
-   ========================================================================== */
-/* Only one siren icon at a time (scoped so modal/video-hint fades are untouched) */
-.audio-icon-unmuted.hidden,
-.audio-icon-muted.hidden {
-  display: none !important;
-}
-
-/* AI tracker label only in idle mode */
-.mock-cctv-screen:not([data-state="idle"]) .crosshair-label {
-  display: none;
-}
-
-.hero-note {
-  margin-top: 0.9rem;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--text-dim);
-}
-
-/* Mock CCTV top HUD on small phones: two clean rows */
+/* Fix Mobile Layout of the Mock CCTV Screen on devices under 600px */
 @media (max-width: 600px) {
   .screen-hud-top {
-    flex-wrap: wrap;
-    row-gap: 0.35rem;
-    padding: 0.55rem 0.85rem;
-    font-size: 0.7rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+    padding: 0.65rem 0.85rem;
   }
+
+  /* Hide 4K UHD • 60 FPS and POE+ to prevent text collision */
+  .screen-hud-top .hud-center,
+  .screen-hud-top .feed-resolution,
+  .screen-hud-top .battery-status {
+    display: none !important;
+  }
+
   .screen-hud-top .hud-left {
     display: flex;
     align-items: center;
-    flex: 1 1 100%;
-    min-width: 0;
+    justify-content: space-between;
+    width: 100%;
+    gap: 0.5rem;
   }
-  .screen-hud-top .live-rec-badge {
-    flex: none;
-    margin-right: 0.6rem;
-  }
+
   .screen-hud-top .cam-id {
-    min-width: 0;
+    font-size: 0.7rem;
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
   }
-  .screen-hud-top .hud-center,
-  .screen-hud-top .battery-status {
-    display: none;
-  }
+
   .screen-hud-top .hud-right {
-    flex: 1 1 100%;
     display: flex;
+    align-items: center;
     justify-content: flex-start;
+    width: 100%;
   }
+
   .screen-hud-top .hud-clock {
     margin-right: 0;
+    font-size: 0.72rem;
+  }
+
+  .screen-hud-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    padding: 0.65rem 0.85rem;
+    font-size: 0.72rem;
   }
 }

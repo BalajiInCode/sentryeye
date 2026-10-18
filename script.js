@@ -6,26 +6,33 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   // =========================================================================
-  // 1. Navigation & Mobile Drawer
+  // 1. Navigation & Mobile Drawer (Auto-closes on tap)
   // =========================================================================
   const navToggle = document.getElementById('navToggle');
   const mainNav = document.getElementById('mainNav');
-  const navLinks = document.querySelectorAll('.nav-link, .nav-actions a');
 
   if (navToggle && mainNav) {
-    navToggle.addEventListener('click', () => {
+    navToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
       const isOpen = mainNav.classList.toggle('nav-open');
       navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
 
-    // Close mobile nav when clicking any anchor link
-    navLinks.forEach(link => {
+    // Close mobile nav when clicking any link inside the navigation drawer
+    const allNavAnchors = mainNav.querySelectorAll('a');
+    allNavAnchors.forEach(link => {
       link.addEventListener('click', () => {
-        if (mainNav.classList.contains('nav-open')) {
-          mainNav.classList.remove('nav-open');
-          navToggle.setAttribute('aria-expanded', 'false');
-        }
+        mainNav.classList.remove('nav-open');
+        navToggle.setAttribute('aria-expanded', 'false');
       });
+    });
+
+    // Close when clicking outside of the navbar
+    document.addEventListener('click', (e) => {
+      if (mainNav.classList.contains('nav-open') && !mainNav.contains(e.target) && !navToggle.contains(e.target)) {
+        mainNav.classList.remove('nav-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
     });
   }
 
@@ -91,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
     activeAudioNodes.forEach(item => {
       try {
         if (item.gainNode) {
-          // Quick smooth ramp down to avoid audio click/pop
           const currTime = audioCtx ? audioCtx.currentTime : 0;
           item.gainNode.gain.cancelScheduledValues(currTime);
           item.gainNode.gain.setValueAtTime(item.gainNode.gain.value, currTime);
@@ -123,9 +129,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     osc.type = 'sawtooth';
     const now = ctx.currentTime;
-    const duration = 3.6; // plays for 3.6s
+    const duration = 3.6;
 
-    // Frequency modulation wail (600Hz <-> 960Hz)
+    // Frequency modulation wail (650Hz <-> 960Hz)
     osc.frequency.setValueAtTime(650, now);
     osc.frequency.linearRampToValueAtTime(960, now + 0.4);
     osc.frequency.linearRampToValueAtTime(650, now + 0.8);
@@ -243,12 +249,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // 4. Mute / Unmute Button Controller
+  // 4. Mute / Unmute Button Controller (Fix: Only 1 icon displays at a time)
   // =========================================================================
   const audioToggleBtn = document.getElementById('audioToggleBtn');
   const iconUnmuted = document.getElementById('iconUnmuted');
   const iconMuted = document.getElementById('iconMuted');
   const audioStatusText = document.getElementById('audioStatusText');
+
+  // Initial display guarantee: Unmuted icon visible, muted icon hidden
+  if (iconUnmuted) iconUnmuted.classList.remove('hidden');
+  if (iconMuted) iconMuted.classList.add('hidden');
 
   if (audioToggleBtn) {
     audioToggleBtn.addEventListener('click', () => {
@@ -283,6 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const overlayTamper = document.getElementById('overlayTamper');
   const overlayAttendance = document.getElementById('overlayAttendance');
   const mockScreen = document.getElementById('mockScreen');
+  const idleCrosshairs = document.getElementById('idleCrosshairs');
 
   // Telemetry HUD items
   const sensorThermal = document.getElementById('sensorThermal');
@@ -324,6 +335,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mockScreen) {
       mockScreen.setAttribute('data-state', 'idle');
     }
+    // Show AI Tracker label only in idle mode
+    if (idleCrosshairs) {
+      idleCrosshairs.style.display = '';
+    }
   }
 
   // Scenario 1: Fire
@@ -333,6 +348,9 @@ document.addEventListener('DOMContentLoaded', () => {
       clearActiveButtonStates();
       hideAllOverlays();
       btnSimFire.classList.add('active');
+
+      // Hide AI Tracker label so it never overlaps alerts
+      if (idleCrosshairs) idleCrosshairs.style.display = 'none';
 
       if (overlayFire) overlayFire.classList.remove('hidden');
       if (mockScreen) mockScreen.setAttribute('data-state', 'fire');
@@ -364,6 +382,9 @@ document.addEventListener('DOMContentLoaded', () => {
       hideAllOverlays();
       btnSimTamper.classList.add('active');
 
+      // Hide AI Tracker label so it never overlaps alerts
+      if (idleCrosshairs) idleCrosshairs.style.display = 'none';
+
       if (overlayTamper) overlayTamper.classList.remove('hidden');
       if (mockScreen) mockScreen.setAttribute('data-state', 'tamper');
 
@@ -393,6 +414,9 @@ document.addEventListener('DOMContentLoaded', () => {
       clearActiveButtonStates();
       hideAllOverlays();
       btnSimAttendance.classList.add('active');
+
+      // Hide AI Tracker label so it never overlaps student cards
+      if (idleCrosshairs) idleCrosshairs.style.display = 'none';
 
       if (overlayAttendance) overlayAttendance.classList.remove('hidden');
       if (mockScreen) mockScreen.setAttribute('data-state', 'attendance');
@@ -438,7 +462,7 @@ document.addEventListener('DOMContentLoaded', () => {
       sentryVideo.play().then(() => {
         if (videoPlayHint) videoPlayHint.classList.add('hidden');
       }).catch(err => {
-        console.warn('Video auto-playback deferred:', err);
+        console.warn('Video playback deferred until gesture:', err);
       });
     }
   }
@@ -462,7 +486,121 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // 7. Invest in SentryEye Modal & Confetti Celebration
+  // 7. Chroma Grid Spotlight Hover Effect on SCAMPER Cards
+  // =========================================================================
+  const scamperGrid = document.getElementById('scamperGrid');
+  const scamperCards = document.querySelectorAll('.scamper-card');
+
+  const isTouchDevice = window.matchMedia('(hover: none)').matches;
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (scamperGrid && scamperCards.length > 0 && !isTouchDevice && !prefersReduced) {
+    let targetX = -1000;
+    let targetY = -1000;
+    let currentX = -1000;
+    let currentY = -1000;
+    let isHovering = false;
+    let animFrame = null;
+    const spotlightRadius = 250; // ~250px circular spotlight
+
+    function renderChroma() {
+      // Smooth movement with lerp
+      currentX += (targetX - currentX) * 0.16;
+      currentY += (targetY - currentY) * 0.16;
+
+      scamperGrid.style.setProperty('--mx', `${currentX.toFixed(1)}px`);
+      scamperGrid.style.setProperty('--my', `${currentY.toFixed(1)}px`);
+
+      const gridRect = scamperGrid.getBoundingClientRect();
+
+      scamperCards.forEach(card => {
+        const cardRect = card.getBoundingClientRect();
+        // Calculate relative coordinates of card within scamperGrid
+        const cardLeft = cardRect.left - gridRect.left;
+        const cardRight = cardRect.right - gridRect.left;
+        const cardTop = cardRect.top - gridRect.top;
+        const cardBottom = cardRect.bottom - gridRect.top;
+
+        // Closest point on the card bounding box to the current mouse position
+        const closestX = Math.max(cardLeft, Math.min(currentX, cardRight));
+        const closestY = Math.max(cardTop, Math.min(currentY, cardBottom));
+
+        const dx = currentX - closestX;
+        const dy = currentY - closestY;
+        const distance = Math.hypot(dx, dy);
+
+        if (distance < spotlightRadius && isHovering) {
+          // Inside spotlight: calculate intensity (0 at edge to 1 directly over card)
+          const factor = 1 - (distance / spotlightRadius);
+          const grayscaleVal = (0.8 * (1 - factor)).toFixed(3);
+          const brightnessVal = (0.9 + 0.18 * factor).toFixed(3);
+
+          card.style.setProperty('--card-gray', grayscaleVal);
+          card.style.setProperty('--card-bright', brightnessVal);
+          card.style.borderColor = `rgba(0, 240, 255, ${(0.15 + 0.5 * factor).toFixed(2)})`;
+          card.style.boxShadow = `0 12px 35px rgba(0, 0, 0, 0.45), 0 0 ${(30 * factor).toFixed(1)}px rgba(0, 240, 255, ${(0.35 * factor).toFixed(2)})`;
+        } else {
+          // Outside spotlight: desaturated
+          card.style.setProperty('--card-gray', '0.8');
+          card.style.setProperty('--card-bright', '0.9');
+          card.style.borderColor = '';
+          card.style.boxShadow = '';
+        }
+      });
+
+      // Continue animating until settled
+      if (isHovering || Math.abs(currentX - targetX) > 0.4 || Math.abs(currentY - targetY) > 0.4) {
+        animFrame = requestAnimationFrame(renderChroma);
+      } else {
+        animFrame = null;
+      }
+    }
+
+    scamperGrid.addEventListener('mousemove', (e) => {
+      const rect = scamperGrid.getBoundingClientRect();
+      targetX = e.clientX - rect.left;
+      targetY = e.clientY - rect.top;
+
+      if (!isHovering) {
+        isHovering = true;
+        scamperGrid.classList.add('has-mouse');
+        currentX = targetX;
+        currentY = targetY;
+      }
+
+      if (!animFrame) {
+        animFrame = requestAnimationFrame(renderChroma);
+      }
+    });
+
+    scamperGrid.addEventListener('mouseenter', (e) => {
+      const rect = scamperGrid.getBoundingClientRect();
+      targetX = e.clientX - rect.left;
+      targetY = e.clientY - rect.top;
+      currentX = targetX;
+      currentY = targetY;
+      isHovering = true;
+      scamperGrid.classList.add('has-mouse');
+
+      if (!animFrame) {
+        animFrame = requestAnimationFrame(renderChroma);
+      }
+    });
+
+    scamperGrid.addEventListener('mouseleave', () => {
+      isHovering = false;
+      scamperGrid.classList.remove('has-mouse');
+      targetX = -1000;
+      targetY = -1000;
+
+      if (!animFrame) {
+        animFrame = requestAnimationFrame(renderChroma);
+      }
+    });
+  }
+
+  // =========================================================================
+  // 8. Invest in SentryEye Modal & Confetti Celebration
   // =========================================================================
   const investBtn = document.getElementById('investBtn');
   const investModal = document.getElementById('investModal');
@@ -600,7 +738,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // =========================================================================
-  // 8. Scroll-triggered Reveal Animations (IntersectionObserver)
+  // 9. Scroll-triggered Reveal Animations (IntersectionObserver)
   // =========================================================================
   const revealElements = document.querySelectorAll('.reveal-on-scroll');
 

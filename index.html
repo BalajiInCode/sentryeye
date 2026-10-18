@@ -110,10 +110,10 @@
             <div class="telemetry-card">
               <span class="telemetry-label">LATENCY</span>
               <span class="telemetry-value cyan-val">Near-instant alerts</span>
-              <span class="telemetry-sub">Instant On-Campus Alert</span>
+              <span class="telemetry-sub">On-Campus Notification</span>
             </div>
           </div>
-          <p class="hero-note">Concept targets, prototype stage.</p>
+          <div class="telemetry-note">Concept targets, prototype stage.</div>
         </div>
 
         <!-- Hero Visual: Cyber CCTV HUD Graphic -->
@@ -236,7 +236,7 @@
             <div class="problem-badge">VULNERABILITY 03</div>
             <h3 class="problem-heading">Manual Monitoring is Tiring</h3>
             <p class="problem-text">
-              Human attention drops quickly during long monitoring shifts, so important events can be missed. Human attention span cannot reliably track dozens of campus corridors simultaneously.
+              Human attention drops quickly during long monitoring shifts, so important events can be missed.
             </p>
             <div class="problem-impact">
               <span class="impact-label">Consequence:</span>
@@ -307,8 +307,8 @@
               class="sentry-video-player" 
               controls 
               preload="metadata"
-              poster="poster.jpg"
               playsinline
+              poster="poster.svg"
               aria-label="SentryEye concept promotional video with voice"
             >
               <source src="SentryEye_Story_WithVoice.mp4" type="video/mp4">
@@ -660,7 +660,8 @@
           </p>
         </div>
 
-        <div class="scamper-grid">
+        <div class="scamper-grid" id="scamperGrid">
+          <div class="scamper-grid-spotlight" id="scamperSpotlight" aria-hidden="true"></div>
           <!-- S - Substitute -->
           <div class="scamper-card reveal-on-scroll" data-scamper="S">
             <div class="scamper-letter-badge">S</div>
@@ -788,7 +789,6 @@
         </div>
       </div>
     </section>
-
 
     <!-- 6. Final Call-to-Action Section -->
     <section class="cta-section" id="invest">
